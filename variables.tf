@@ -21,3 +21,9 @@ variable "docker_image" {
   type        = string
   default     = "yacineatmani/newsletter-app:latest"
 }
+
+variable "container_port" {
+  description = "Port exposed by the container"
+  type        = number
+  default     = 3000
+}

@@ -56,7 +56,7 @@ resource "aws_instance" "newsletter" {
     systemctl enable docker
     systemctl start docker
     docker pull ${var.docker_image}
-    docker run -d --name newsletter-app -p 80:3000 --restart unless-stopped ${var.docker_image}
+    docker run -d --name newsletter-app -p 80:${var.container_port} --restart unless-stopped ${var.docker_image}
     EOF
 
   lifecycle {
