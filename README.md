@@ -2,6 +2,11 @@
 
 Objectif : déployer une application newsletter Docker sur EC2 avec Terraform (Security Group + User Data + Outputs).
 
+Image applicative : construite depuis le repo News_Site via GitHub Actions, puis publiée sur Docker Hub.
+
+- Repo app : https://github.com/yacineatmani/News_Site
+- Image : `yacineatmani/newsletter-app:latest`
+
 ## Stack
 - Terraform
 - AWS EC2 (t3.micro)
@@ -20,6 +25,14 @@ terraform init
 terraform validate
 terraform plan
 terraform apply -auto-approve
+```
+
+## Redéploiement avec image réelle
+```bash
+export AWS_PROFILE=terraform
+terraform apply -replace=aws_instance.newsletter -auto-approve \
+	-var="docker_image=yacineatmani/newsletter-app:latest" \
+	-var="container_port=8000"
 ```
 
 ## Vérification

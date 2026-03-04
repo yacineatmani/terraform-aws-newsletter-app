@@ -25,5 +25,5 @@ variable "docker_image" {
 variable "container_port" {
   description = "Port exposed by the container"
   type        = number
-  default     = 3000
+  default     = 8000
 }
